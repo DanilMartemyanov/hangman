@@ -1,0 +1,145 @@
+{
+    "category": {
+        "name1": {
+            "title": "медицина",
+            "level": {
+                "easy": {
+                    "word1": {
+                        "answer": "Температура",
+                        "description": ""
+                    },
+                    "word2": {
+                        "answer": "Кашель",
+                        "description": ""
+                    },
+                    "word3": {
+                        "answer": "Головная боль",
+                        "description": ""
+                    }
+                },
+                "middle": {
+                    "word1": {
+                        "answer": "Анемия",
+                        "description": ""
+                    },
+                    "word2": {
+                        "answer": "Артрит",
+                        "description": ""
+                    },
+                    "word3": {
+                        "answer": "Гастрит",
+                        "description": ""
+                    }
+                },
+                "hard": {
+                    "word1": {
+                        "answer": "Энцефалит",
+                        "description": ""
+                    },
+                    "word2": {
+                        "answer": "Панкреатит",
+                        "description": ""
+                    },
+                    "word3": {
+                        "answer": "Стеноз",
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "name2": {
+            "title": "животные",
+            "level": {
+                "easy": {
+                    "word1": {
+                        "answer": "Бабочка",
+                        "description": ""
+                    },
+                    "word2": {
+                        "answer": "Муравей",
+                        "description": ""
+                    },
+                    "word3": {
+                        "answer": "Рыбка",
+                        "description": ""
+                    }
+                },
+                "middle": {
+                    "word1": {
+                        "answer": "Капибара",
+                        "description": ""
+                    },
+                    "word2": {
+                        "answer": "Муравьед",
+                        "description": ""
+                    },
+                    "word3": {
+                        "answer": "Скунс",
+                        "description": ""
+                    }
+                },
+                "hard": {
+                    "word1": {
+                        "answer": "Медоед",
+                        "description": ""
+                    },
+                    "word2": {
+                        "answer": "Колибри",
+                        "description": ""
+                    },
+                    "word3": {
+                        "answer": "Богомол",
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "name3": {
+            "title": "спорт",
+            "level": {
+                "easy": {
+                    "word1": {
+                        "answer": "",
+                        "description": ""
+                    },
+                    "word2": {
+                        "answer": "",
+                        "description": ""
+                    },
+                    "word3": {
+                        "answer": "",
+                        "description": ""
+                    }
+                },
+                "middle": {
+                    "word1": {
+                        "answer": "",
+                        "description": ""
+                    },
+                    "word2": {
+                        "answer": "",
+                        "description": ""
+                    },
+                    "word3": {
+                        "answer": "",
+                        "description": ""
+                    }
+                },
+                "hard": {
+                    "word1": {
+                        "answer": "",
+                        "description": ""
+                    },
+                    "word2": {
+                        "answer": "",
+                        "description": ""
+                    },
+                    "word3": {
+                        "answer": "",
+                        "description": ""
+                    }
+                }
+            }
+        }
+    }
+}
