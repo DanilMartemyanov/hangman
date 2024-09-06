@@ -46,12 +46,12 @@ public class ImageGallows {
 
     public static final String STEP_5 = "" +
         " __________________\n" +
-        "  |/              |\n" +
-        "  |               |\n" +
-        "  |\n " +
-        " |\n " +
-        " |\n " +
-        " |\n " +
+        " |/               |\n" +
+        " |                |\n" +
+        " |\n" +
+        " |\n" +
+        " |\n" +
+        " |\n" +
         "/|\\\n" +
         "                   ";
 
