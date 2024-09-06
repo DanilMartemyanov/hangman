@@ -3,6 +3,7 @@ package backend.academy;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import gallows.ImageGallows;
 import gallows.LogicFindCorrectCharImpl;
 import gallows.WordsGallows;
 import lombok.experimental.UtilityClass;
@@ -33,6 +34,13 @@ public class Main {
 
         LogicFindCorrectCharImpl logicFindCorrectCharImpl = new LogicFindCorrectCharImpl();
         System.out.println(logicFindCorrectCharImpl.checkChar('п', "Привет"));
+        System.out.println(ImageGallows.STEP_1);
+        System.out.println(ImageGallows.STEP_2);
+        System.out.println(ImageGallows.STEP_3);
+        System.out.println(ImageGallows.STEP_4);
+        System.out.println(ImageGallows.STEP_5);
+        System.out.println(ImageGallows.STEP_6);
+
 
 
     }
