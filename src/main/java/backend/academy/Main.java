@@ -32,7 +32,7 @@ public class Main {
         System.out.println(emptyString);
 
         LogicFindCorrectCharImpl logicFindCorrectCharImpl = new LogicFindCorrectCharImpl();
-        System.out.println(logicFindCorrectCharImpl.checkChar('п', "привет"));
+        System.out.println(logicFindCorrectCharImpl.checkChar('п', "Привет"));
 
 
     }
