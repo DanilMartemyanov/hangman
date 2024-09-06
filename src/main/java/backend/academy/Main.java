@@ -1,11 +1,10 @@
 package backend.academy;
 
-import com.beust.jcommander.JCommander;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 
-import gallowsGame.WordsGallows;
+import gallows.LogicFindCorrectCharImpl;
+import gallows.WordsGallows;
 import lombok.experimental.UtilityClass;
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class Main {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonNode jsonNode = objectMapper.readTree(file);
-            for(JsonNode i : jsonNode.get("category").findValues("level")){
+            for (JsonNode i : jsonNode.get("category").findValues("level")) {
                 System.out.println(i);
             }
         } catch (IOException e) {
@@ -26,8 +25,14 @@ public class Main {
         }
 
         WordsGallows wordsGallows = new WordsGallows();
-        System.out.println(wordsGallows.getRandomCategory());
+//        System.out.println(wordsGallows.getRandomCategory());
         System.out.println(wordsGallows.getRandomLevel());
+
+        String emptyString = "привет".replaceAll(".","_");
+        System.out.println(emptyString);
+
+        LogicFindCorrectCharImpl logicFindCorrectCharImpl = new LogicFindCorrectCharImpl();
+        System.out.println(logicFindCorrectCharImpl.checkChar('п', "привет"));
 
 
     }

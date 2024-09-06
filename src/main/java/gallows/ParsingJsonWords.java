@@ -1,16 +1,11 @@
-package gallowsGame;
+package gallows;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,7 +37,6 @@ public class ParsingJsonWords {
     private JsonNode word2;
     @JsonProperty("word3")
     private JsonNode word3;
-
 
 
 }
