@@ -15,11 +15,10 @@ import java.util.regex.Pattern;
 
 @UtilityClass
 public class Main {
-    private final String regexCategory = "[masn]}";
-    private final String test = "[a]{1}";
+
     public static void main(String[] args) throws IOException {
         File file = new File("src/main/resources/words.json");
-        Pattern pattern = Pattern.compile(regexCategory);
+        Pattern pattern = Pattern.compile("^[masn]$");
         Matcher matcher = pattern.matcher("m");
         System.out.println(matcher.find());
         ObjectMapper objectMapper = new ObjectMapper();
@@ -50,9 +49,9 @@ public class Main {
         System.out.println(ImageGallows.STEP_6);
 
         WordPlayer wordPlayer = new WordPlayer("собака");
-        System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer,'а').currentAnswer());
+        System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer, 'а').currentAnswer());
         System.out.println(wordPlayer.currentAnswer());
-        System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer,'р').currentAnswer());
+        System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer, 'р').currentAnswer());
         System.out.println(wordPlayer.currentAnswer());
         System.out.println(wordPlayer.word());
 
