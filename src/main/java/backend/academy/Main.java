@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import gallows.ImageGallows;
 import gallows.LogicFindCorrectCharImpl;
+import gallows.WordPlayer;
 import gallows.WordsGallows;
 import lombok.experimental.UtilityClass;
 import java.io.File;
@@ -29,11 +30,11 @@ public class Main {
 //        System.out.println(wordsGallows.getRandomCategory());
         System.out.println(wordsGallows.getRandomLevel());
 
-        String emptyString = "привет".replaceAll(".","_");
+        String emptyString = "привет".replaceAll(".", "_");
         System.out.println(emptyString);
 
         LogicFindCorrectCharImpl logicFindCorrectCharImpl = new LogicFindCorrectCharImpl();
-        System.out.println(logicFindCorrectCharImpl.checkChar('п', "Привет"));
+//        System.out.println(logicFindCorrectCharImpl.checkChar('п', "Привет"));
         System.out.println(ImageGallows.STEP_1);
         System.out.println(ImageGallows.STEP_2);
         System.out.println(ImageGallows.STEP_3);
@@ -41,7 +42,12 @@ public class Main {
         System.out.println(ImageGallows.STEP_5);
         System.out.println(ImageGallows.STEP_6);
 
-
+        WordPlayer wordPlayer = new WordPlayer("привет");
+        System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer,'п').currentAnswer());
+        System.out.println(wordPlayer.currentAnswer());
+        System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer,'р').currentAnswer());
+        System.out.println(wordPlayer.currentAnswer());
+        System.out.println(wordPlayer.word());
 
     }
 }
