@@ -10,11 +10,18 @@ import gallows.WordsGallows;
 import lombok.experimental.UtilityClass;
 import java.io.File;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @UtilityClass
 public class Main {
+    private final String regexCategory = "[masn]}";
+    private final String test = "[a]{1}";
     public static void main(String[] args) throws IOException {
         File file = new File("src/main/resources/words.json");
+        Pattern pattern = Pattern.compile(regexCategory);
+        Matcher matcher = pattern.matcher("m");
+        System.out.println(matcher.find());
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonNode jsonNode = objectMapper.readTree(file);
@@ -42,12 +49,14 @@ public class Main {
         System.out.println(ImageGallows.STEP_5);
         System.out.println(ImageGallows.STEP_6);
 
-        WordPlayer wordPlayer = new WordPlayer("привет");
-        System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer,'п').currentAnswer());
+        WordPlayer wordPlayer = new WordPlayer("собака");
+        System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer,'а').currentAnswer());
         System.out.println(wordPlayer.currentAnswer());
         System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer,'р').currentAnswer());
         System.out.println(wordPlayer.currentAnswer());
         System.out.println(wordPlayer.word());
+
+        System.out.println(wordsGallows.getAllCategories());
 
     }
 }

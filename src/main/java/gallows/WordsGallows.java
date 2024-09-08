@@ -60,4 +60,19 @@ public class WordsGallows {
         }
 
     }
+
+    public ArrayList<String> getAllCategories(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            JsonNode node = objectMapper.readTree(FILE);
+            ArrayList<String> categories = new ArrayList<>();
+            for(JsonNode jsonNode : node.get("category") ){
+                categories.add(jsonNode.get("title").asText());
+            }
+            return categories;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
