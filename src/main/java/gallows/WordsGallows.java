@@ -5,17 +5,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
+@SuppressWarnings("checkstyle:MultipleStringLiterals")
 public class WordsGallows {
     private static final File FILE = new File("src/main/resources/words.json");
-//    private static final char EASY = 0;
-//    private static final char MIDDLE = 1;
-//    private static final char HARD = 3;
 
-    public String getWords(ArrayList<String> words) {
+    public String getRandomWords(ArrayList<String> words) {
         int quantity = words.size();
-        int index = ThreadLocalRandom.current().nextInt(0, quantity + 1);
+        int index = ThreadLocalRandom.current().nextInt(0, quantity );
         return words.get(index);
 
     }
@@ -61,18 +60,67 @@ public class WordsGallows {
 
     }
 
-    public ArrayList<String> getAllCategories(){
+    public ArrayList<String> getAllCategories() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             JsonNode node = objectMapper.readTree(FILE);
             ArrayList<String> categories = new ArrayList<>();
-            for(JsonNode jsonNode : node.get("category") ){
+            for (JsonNode jsonNode : node.get("category")) {
                 categories.add(jsonNode.get("title").asText());
             }
             return categories;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public JsonNode getJsonWords(String category, String level) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        int indexCategory;
+        int count = 0;
+        try {
+            JsonNode node = objectMapper.readTree(FILE);
+            System.out.println(category);
+            switch (category) {
+                case "m":
+                    indexCategory = 0;
+                    break;
+                case "a":
+                    indexCategory = 1;
+                    break;
+                case "s":
+                    indexCategory = 2;
+                    break;
+                default:
+                    indexCategory = -1;
+            }
+            System.out.println(indexCategory);
+
+            for (JsonNode categoryNode : node.path("category")) {
+                for (JsonNode levelNode : categoryNode.path("level")) {
+                    for (JsonNode wordsNode : levelNode.path(level)) {
+                        if (indexCategory == count) {
+                            return wordsNode;
+                        }
+                        count++;
+                    }
+                }
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public HashMap<String, String> getWord(String category, String level) {
+        JsonNode jsonNode = getJsonWords(category, level);
+        int index = ThreadLocalRandom.current().nextInt(0, jsonNode.findValues("answer")
+            .toArray().length + 1);
+        String answer = jsonNode.findValues("answer").toArray()[index].toString();
+        String description = jsonNode.findValues("description").toArray()[index].toString();
+        HashMap<String, String> wordGame = new HashMap<>();
+        wordGame.put(answer, description);
+        return wordGame;
     }
 }

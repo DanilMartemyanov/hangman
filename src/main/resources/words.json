@@ -22,7 +22,7 @@
         "middle": {
           "words": [
             {
-              "answer": "Температура",
+              "answer": "Пневмония",
               "description": ""
             },
             {
@@ -38,7 +38,7 @@
         "hard": {
           "words": [
             {
-              "answer": "Температура",
+              "answer": "Зуд",
               "description": ""
             },
             {
@@ -59,15 +59,15 @@
         "easy": {
           "words": [
             {
-              "answer": "Температура",
+              "answer": "Слон",
               "description": ""
             },
             {
-              "answer": "Кашель",
+              "answer": "Кошка",
               "description": ""
             },
             {
-              "answer": "Головная боль",
+              "answer": "собака",
               "description": ""
             }
           ]

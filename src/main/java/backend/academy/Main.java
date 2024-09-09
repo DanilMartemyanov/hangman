@@ -56,6 +56,12 @@ public class Main {
         System.out.println(wordPlayer.word());
 
         System.out.println(wordsGallows.getAllCategories());
+        System.out.println("_____________________________________");
+        System.out.println(wordsGallows.getJsonWords("m", "easy"));
+        JsonNode test = wordsGallows.getJsonWords("m", "easy");
+        System.out.println(test.findValues("answer").toArray()[1]);
+        System.out.println("тут");
+        System.out.println(wordsGallows.getWord("a", "easy"));
 
     }
 }

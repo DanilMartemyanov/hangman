@@ -1,7 +1,11 @@
 package gallows;
 
-public class ImageGallows {
+import lombok.NoArgsConstructor;
 
+@SuppressWarnings("checkstyle:OperatorWrap")
+@NoArgsConstructor
+public class ImageGallows {
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
     public static final String STEP_1 = "" +
 
             " |\n" +
@@ -11,7 +15,7 @@ public class ImageGallows {
             " |\n" +
             " |\n" +
         "                   ";
-
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
     public static final String STEP_2 = "" +
             " |\n" +
             " |\n" +
@@ -21,7 +25,7 @@ public class ImageGallows {
             " |\n" +
             "/|\\\n" +
         "                   ";
-
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
     public static final String STEP_3 = "" +
          " __________________\n" +
         " |\n" +
@@ -32,7 +36,7 @@ public class ImageGallows {
         " |\n" +
         "/|\\\n" +
         "                   ";
-
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
     public static final String STEP_4 = "" +
         " __________________\n" +
         " |/\n" +
@@ -43,7 +47,7 @@ public class ImageGallows {
         " |\n" +
         "/|\\\n" +
         "                   ";
-
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
     public static final String STEP_5 = "" +
         " __________________\n" +
         " |/               |\n" +
@@ -54,7 +58,7 @@ public class ImageGallows {
         " |\n" +
         "/|\\\n" +
         "                   ";
-
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
     public static final String STEP_6 = "" +
         " __________________\n" +
         " |/               |\n" +

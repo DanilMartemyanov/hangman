@@ -1,7 +1,5 @@
 package gallows;
 
-import java.util.ArrayList;
-
 public class LogicFindCorrectCharImpl implements LogicFindCorrectChar {
 
     @Override

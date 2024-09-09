@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GameInterface {
+    @SuppressWarnings("checkstyle:ConstantName")
     private static final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     private final WordsGallows wordsGallows = new WordsGallows();
     private final String regexCategory = "^[masn]$";
@@ -15,8 +16,7 @@ public class GameInterface {
     private final String regexLevel = "^[emhn]$";
     private final Pattern patternLevel = Pattern.compile(regexCategory);
 
-    private final Matcher matcherLevel = patternLevel.matcher(regexLevel);
-
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
     public void userInterface() {
         PrintStream printStream = new PrintStream(System.out);
         printStream.println("------------------------------------------------------");
@@ -39,6 +39,9 @@ public class GameInterface {
                     answerCategory = bufferedReader.readLine();
                     matcherCategory = patternCategory.matcher(answerCategory);
                 }
+                if (answerCategory.equals("n")) {
+                    answerCategory = wordsGallows.getRandomCategory();
+                }
                 printStream.println("------------------------------------------------------");
                 printStream.println("Что насчет уровня сложности?");
                 printStream.println("Для выбора уровня сложности укажите букву [e/m/h]-, иначе нажмите - [n]");
@@ -48,6 +51,9 @@ public class GameInterface {
                     printStream.println("Некорректный ввод, введите значение заново");
                     answerLevel = bufferedReader.readLine();
                     matcherLevel = patternLevel.matcher(answerLevel);
+                }
+                if (answerLevel.equals("n")) {
+                    answerCategory = wordsGallows.getRandomLevel();
                 }
 
             }
