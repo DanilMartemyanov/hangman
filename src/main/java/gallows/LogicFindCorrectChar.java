@@ -1,5 +1,5 @@
 package gallows;
 
 public interface LogicFindCorrectChar {
-    WordPlayer checkChar(WordPlayer wordPlayer, char letter);
+    SessionPlayer checkChar(SessionPlayer wordPlayer, char letter);
 }

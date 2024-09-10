@@ -74,10 +74,11 @@ public class WordsGallows {
         }
     }
 
-    public JsonNode getJsonWords(String category, String level) {
+    public JsonNode getJsonWords(String category, String levelUser) {
         ObjectMapper objectMapper = new ObjectMapper();
         int indexCategory;
         int count = 0;
+        String level;
         try {
             JsonNode node = objectMapper.readTree(FILE);
             System.out.println(category);
@@ -94,8 +95,20 @@ public class WordsGallows {
                 default:
                     indexCategory = -1;
             }
-            System.out.println(indexCategory);
-
+            switch (levelUser) {
+                case "e":
+                    level = "easy";
+                    break;
+                case "m":
+                    level = "middle";
+                    break;
+                case "h":
+                    level = "hard";
+                    break;
+                default:
+                    level = "";
+            }
+            System.out.println(level);
             for (JsonNode categoryNode : node.path("category")) {
                 for (JsonNode levelNode : categoryNode.path("level")) {
                     for (JsonNode wordsNode : levelNode.path(level)) {
@@ -116,8 +129,8 @@ public class WordsGallows {
     public HashMap<String, String> getWord(String category, String level) {
         JsonNode jsonNode = getJsonWords(category, level);
         int index = ThreadLocalRandom.current().nextInt(0, jsonNode.findValues("answer")
-            .toArray().length + 1);
-        String answer = jsonNode.findValues("answer").toArray()[index].toString();
+            .toArray().length);
+        String answer = jsonNode.findValues("answer").toArray()[index].toString().replace("\"", "");
         String description = jsonNode.findValues("description").toArray()[index].toString();
         HashMap<String, String> wordGame = new HashMap<>();
         wordGame.put(answer, description);

@@ -4,17 +4,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GameInterface {
     @SuppressWarnings("checkstyle:ConstantName")
     private static final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    private final CheckInputUserImpl checkInputUser = new CheckInputUserImpl();
+    private final LogicFindCorrectCharImpl logicFindCorrectChar = new LogicFindCorrectCharImpl();
     private final WordsGallows wordsGallows = new WordsGallows();
     private final String regexCategory = "^[masn]$";
     private final Pattern patternCategory = Pattern.compile(regexCategory);
     private final String regexLevel = "^[emhn]$";
-    private final Pattern patternLevel = Pattern.compile(regexCategory);
+    private final Pattern patternLevel = Pattern.compile(regexLevel);
 
     @SuppressWarnings("checkstyle:MultipleStringLiterals")
     public void userInterface() {
@@ -54,6 +57,43 @@ public class GameInterface {
                 }
                 if (answerLevel.equals("n")) {
                     answerCategory = wordsGallows.getRandomLevel();
+                }
+                printStream.println("------------------------------------------------------");
+                HashMap<String, String> gameWord = wordsGallows.getWord(answerCategory, answerLevel);
+                String word = gameWord.keySet().stream().findFirst().get();
+                String tip = gameWord.get(word);
+                SessionPlayer sessionPlayer = new SessionPlayer(word);
+                printStream.println("Подготовили для вас слово");
+                printStream.println(word);
+                printStream.println("Введите букву:");
+                logicFindCorrectChar.checkChar(sessionPlayer, '_');
+                printStream.println(sessionPlayer.currentEnter());
+                while (!(sessionPlayer.COUNTATTEMPTS < 0)) {
+                    int oldCountMatches = 0;
+                    printStream.println("У вас осталось - " + sessionPlayer.COUNTATTEMPTS + " попыток");
+                    if(sessionPlayer.COUNTATTEMPTS == 0){
+                        printStream.println("GAME OVER");
+                        break;
+                    }
+                    char[] enterLetter = bufferedReader.readLine().toLowerCase().toCharArray();
+                    while (enterLetter.length != 1) {
+                        printStream.println("Некорректный ввод");
+                        enterLetter = bufferedReader.readLine().toLowerCase().toCharArray();
+                    }
+                    logicFindCorrectChar.checkChar(sessionPlayer, enterLetter[0]);
+                    int countMatches =
+                        checkInputUser.equalsCharArray(sessionPlayer.currentEnter(), sessionPlayer.currentAnswer);
+                    if (countMatches == oldCountMatches) {
+                        printStream.println(ImageGallows.IMAGES[sessionPlayer.COUNTATTEMPTS -1]);
+                        sessionPlayer.COUNTATTEMPTS--;
+                    }
+                    oldCountMatches = countMatches;
+                    printStream.println(sessionPlayer.currentAnswer());
+                    System.out.println(checkInputUser.checkCorrectWord(sessionPlayer.currentAnswer(), word));
+                    if(checkInputUser.checkCorrectWord(sessionPlayer.currentAnswer(), word)){
+                        printStream.println("ВЫ победили!!!!!!!!!!!");
+                        break;
+                    }
                 }
 
             }

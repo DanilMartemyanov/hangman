@@ -5,11 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import gallows.ImageGallows;
 import gallows.LogicFindCorrectCharImpl;
-import gallows.WordPlayer;
+import gallows.SessionPlayer;
 import gallows.WordsGallows;
 import lombok.experimental.UtilityClass;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,7 +49,7 @@ public class Main {
         System.out.println(ImageGallows.STEP_5);
         System.out.println(ImageGallows.STEP_6);
 
-        WordPlayer wordPlayer = new WordPlayer("собака");
+        SessionPlayer wordPlayer = new SessionPlayer("собака");
         System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer, 'а').currentAnswer());
         System.out.println(wordPlayer.currentAnswer());
         System.out.println(logicFindCorrectCharImpl.checkChar(wordPlayer, 'р').currentAnswer());
@@ -57,11 +58,12 @@ public class Main {
 
         System.out.println(wordsGallows.getAllCategories());
         System.out.println("_____________________________________");
-        System.out.println(wordsGallows.getJsonWords("m", "easy"));
-        JsonNode test = wordsGallows.getJsonWords("m", "easy");
-        System.out.println(test.findValues("answer").toArray()[1]);
         System.out.println("тут");
-        System.out.println(wordsGallows.getWord("a", "easy"));
+        System.out.println(wordsGallows.getWord("a", "e"));
+        HashMap<String, String> test = wordsGallows.getWord("a", "e");
+        String word = test.keySet().stream().findFirst().get();
+        System.out.println(word);
+        System.out.println();
 
     }
 }

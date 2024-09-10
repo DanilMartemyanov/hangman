@@ -70,5 +70,5 @@ public class ImageGallows {
         "/|\\\n" +
         "                   ";
 
-
+        public static final String[] IMAGES = {STEP_6, STEP_5, STEP_4, STEP_3, STEP_2, STEP_1};
 }
