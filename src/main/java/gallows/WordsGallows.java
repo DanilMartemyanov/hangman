@@ -14,7 +14,7 @@ public class WordsGallows {
 
     public String getRandomWords(ArrayList<String> words) {
         int quantity = words.size();
-        int index = ThreadLocalRandom.current().nextInt(0, quantity );
+        int index = ThreadLocalRandom.current().nextInt(0, quantity);
         return words.get(index);
 
     }
@@ -81,7 +81,6 @@ public class WordsGallows {
         String level;
         try {
             JsonNode node = objectMapper.readTree(FILE);
-            System.out.println(category);
             switch (category) {
                 case "m":
                     indexCategory = 0;
@@ -108,7 +107,6 @@ public class WordsGallows {
                 default:
                     level = "";
             }
-            System.out.println(level);
             for (JsonNode categoryNode : node.path("category")) {
                 for (JsonNode levelNode : categoryNode.path("level")) {
                     for (JsonNode wordsNode : levelNode.path(level)) {

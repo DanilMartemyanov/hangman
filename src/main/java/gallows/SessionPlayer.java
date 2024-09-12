@@ -6,7 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SessionPlayer {
-    public static int COUNTATTEMPTS = 6;
+    @SuppressWarnings("checkstyle:MagicNumber")
+    public static int countAttempts = 6;
     private String word;
     private char[] currentEnter;
     public char[] currentAnswer;

@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -37,6 +36,5 @@ public class ParsingJsonWords {
     private JsonNode word2;
     @JsonProperty("word3")
     private JsonNode word3;
-
 
 }

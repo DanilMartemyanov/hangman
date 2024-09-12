@@ -1,6 +1,18 @@
 package gallows;
 
+import java.util.regex.Pattern;
+
+@SuppressWarnings("checkstyle:ConstantName")
 public class CheckInputUserImpl implements CheckInputUser {
+    static final String REGEXCATEGORY = "^[masn]$";
+    static final Pattern patternCategory = Pattern.compile(REGEXCATEGORY);
+    static final String REGEXLEVEL = "^[emhn]$";
+    static final Pattern patternLevel = Pattern.compile(REGEXLEVEL);
+    static final String STARTGAME = "^[yn]$";
+    static final Pattern patternStartGame = Pattern.compile(STARTGAME);
+    static final String GETTIP = "^[1\\S\s]$";
+    static final Pattern patternGetTip = Pattern.compile(GETTIP);
+
 
     @Override
     public int equalsCharArray(char[] currentEnter, char[] currentAnswer) {
