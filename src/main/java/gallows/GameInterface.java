@@ -68,10 +68,11 @@ public class GameInterface {
                     }
 
                     if (answerLevel.equals("n")) {
-                        answerCategory = wordsGallows.getRandomLevel();
+                        answerLevel = wordsGallows.getRandomLevel();
                     }
 
                     printStream.println("------------------------------------------------------");
+                    printStream.println(answerLevel);
 
                     HashMap<String, String> gameWord = wordsGallows.getWord(answerCategory, answerLevel);
                     String word = gameWord.keySet().stream().findFirst().get();
@@ -85,16 +86,16 @@ public class GameInterface {
                     logicFindCorrectChar.checkChar(sessionPlayer, '_');
                     printStream.println(sessionPlayer.currentEnter());
                     while (!(sessionPlayer.countAttempts < 0)) {
-                        printStream.println("Если хотите подсказку, нажмите -[1], инача - пробел или другую ,erde");
+                        printStream.println("Если хотите подсказку, нажмите -[1], пропустить - пробел или любую букву");
 
                         String userTiip = bufferedReader.readLine().toLowerCase();
                         Matcher matcherTip = CheckInputUserImpl.patternGetTip.matcher(userTiip);
 
-//                        while (!matcherTip.find()) {
-//                            printStream.println("Некорректный ввод");
-//                            userTiip = bufferedReader.readLine().toLowerCase();
-//                            matcherTip = CheckInputUserImpl.patternGetTip.matcher(userTiip);
-//                        }
+                        while (!matcherTip.find()) {
+                            printStream.println("Некорректный ввод");
+                            userTiip = bufferedReader.readLine().toLowerCase();
+                            matcherTip = CheckInputUserImpl.patternGetTip.matcher(userTiip);
+                        }
 
                         if (userTiip.equals("1")) {
                             printStream.println("Подсказка: " + tip);

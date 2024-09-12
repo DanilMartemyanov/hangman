@@ -45,11 +45,11 @@ public class WordsGallows {
             int index = ThreadLocalRandom.current().nextInt(0, sizeLevelArray);
             switch (index) {
                 case 0:
-                    return "easy";
+                    return "e";
                 case 1:
-                    return "middle";
+                    return "m";
                 case 2:
-                    return "hard";
+                    return "h";
                 default:
                     return null;
             }
@@ -88,7 +88,7 @@ public class WordsGallows {
                 case "a":
                     indexCategory = 1;
                     break;
-                case "s":
+                case "c":
                     indexCategory = 2;
                     break;
                 default:
