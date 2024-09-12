@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WordsGallows.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">java</a> &gt; <a href="index.source.html" class="el_package">gallows</a> &gt; <span class="el_source">WordsGallows.java</span></div><h1>WordsGallows.java</h1><pre class="source lang-java linenums">package gallows;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+@SuppressWarnings(&quot;checkstyle:MultipleStringLiterals&quot;)
+<span class="nc" id="L13">public class WordsGallows {</span>
+<span class="nc" id="L14">    private static final File FILE = new File(&quot;src/main/resources/words.json&quot;);</span>
+<span class="nc" id="L15">    private SecureRandom random = new SecureRandom();</span>
+
+    public String getRandomWords(ArrayList&lt;String&gt; words) {
+<span class="nc" id="L18">        int quantity = words.size();</span>
+<span class="nc" id="L19">        int index = random.nextInt(0, quantity);</span>
+<span class="nc" id="L20">        return words.get(index);</span>
+
+    }
+
+    public String getRandomCategory() {
+<span class="nc" id="L25">        ObjectMapper objectMapper = new ObjectMapper();</span>
+        try {
+<span class="nc" id="L27">            JsonNode node = objectMapper.readTree(FILE);</span>
+<span class="nc" id="L28">            ArrayList&lt;String&gt; category = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">            for (JsonNode jsonNode1 : node.get(&quot;category&quot;)) {</span>
+<span class="nc" id="L30">                category.add(jsonNode1.get(&quot;title&quot;).asText());</span>
+<span class="nc" id="L31">            }</span>
+<span class="nc" id="L32">            int index = random.nextInt(0, category.size());</span>
+
+<span class="nc" id="L34">            return category.get(index).substring(0, 1);</span>
+<span class="nc" id="L35">        } catch (IOException e) {</span>
+            // TODO: реализовать свой класс Exctption
+<span class="nc" id="L37">            throw new RuntimeException(e);</span>
+        }
+
+    }
+
+    public String getRandomLevel() {
+<span class="nc" id="L43">        ObjectMapper objectMapper = new ObjectMapper();</span>
+        try {
+<span class="nc" id="L45">            JsonNode node = objectMapper.readTree(FILE);</span>
+<span class="nc" id="L46">            ArrayList&lt;String&gt; level = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L47">            int sizeLevelArray = node.get(&quot;category&quot;).findValues(&quot;level&quot;).size();</span>
+<span class="nc" id="L48">            int index = random.nextInt(0, sizeLevelArray);</span>
+<span class="nc bnc" id="L49" title="All 4 branches missed.">            switch (index) {</span>
+                case 0:
+<span class="nc" id="L51">                    return &quot;e&quot;;</span>
+                case 1:
+<span class="nc" id="L53">                    return &quot;m&quot;;</span>
+                case 2:
+<span class="nc" id="L55">                    return &quot;h&quot;;</span>
+                default:
+<span class="nc" id="L57">                    return null;</span>
+            }
+<span class="nc" id="L59">        } catch (IOException e) {</span>
+            //TO DO: реализовать свой класс Exctption
+<span class="nc" id="L61">            throw new RuntimeException(e);</span>
+        }
+
+    }
+
+    public ArrayList&lt;String&gt; getAllCategories() {
+<span class="nc" id="L67">        ObjectMapper objectMapper = new ObjectMapper();</span>
+        try {
+<span class="nc" id="L69">            JsonNode node = objectMapper.readTree(FILE);</span>
+<span class="nc" id="L70">            ArrayList&lt;String&gt; categories = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">            for (JsonNode jsonNode : node.get(&quot;category&quot;)) {</span>
+<span class="nc" id="L72">                categories.add(jsonNode.get(&quot;title&quot;).asText());</span>
+<span class="nc" id="L73">            }</span>
+<span class="nc" id="L74">            return categories;</span>
+<span class="nc" id="L75">        } catch (IOException e) {</span>
+<span class="nc" id="L76">            throw new RuntimeException(e);</span>
+        }
+    }
+
+    public JsonNode getJsonWords(String category, String levelUser) {
+<span class="nc" id="L81">        ObjectMapper objectMapper = new ObjectMapper();</span>
+        int indexCategory;
+<span class="nc" id="L83">        int count = 0;</span>
+        String level;
+        try {
+<span class="nc" id="L86">            JsonNode node = objectMapper.readTree(FILE);</span>
+<span class="nc bnc" id="L87" title="All 4 branches missed.">            switch (category) {</span>
+                case &quot;m&quot;:
+<span class="nc" id="L89">                    indexCategory = 0;</span>
+<span class="nc" id="L90">                    break;</span>
+                case &quot;a&quot;:
+<span class="nc" id="L92">                    indexCategory = 1;</span>
+<span class="nc" id="L93">                    break;</span>
+                case &quot;c&quot;:
+<span class="nc" id="L95">                    indexCategory = 2;</span>
+<span class="nc" id="L96">                    break;</span>
+                default:
+<span class="nc" id="L98">                    indexCategory = -1;</span>
+            }
+<span class="nc bnc" id="L100" title="All 4 branches missed.">            switch (levelUser) {</span>
+                case &quot;e&quot;:
+<span class="nc" id="L102">                    level = &quot;easy&quot;;</span>
+<span class="nc" id="L103">                    break;</span>
+                case &quot;m&quot;:
+<span class="nc" id="L105">                    level = &quot;middle&quot;;</span>
+<span class="nc" id="L106">                    break;</span>
+                case &quot;h&quot;:
+<span class="nc" id="L108">                    level = &quot;hard&quot;;</span>
+<span class="nc" id="L109">                    break;</span>
+                default:
+<span class="nc" id="L111">                    level = &quot;&quot;;</span>
+            }
+<span class="nc bnc" id="L113" title="All 2 branches missed.">            for (JsonNode categoryNode : node.path(&quot;category&quot;)) {</span>
+<span class="nc bnc" id="L114" title="All 2 branches missed.">                for (JsonNode levelNode : categoryNode.path(&quot;level&quot;)) {</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">                    for (JsonNode wordsNode : levelNode.path(level)) {</span>
+<span class="nc bnc" id="L116" title="All 2 branches missed.">                        if (indexCategory == count) {</span>
+<span class="nc" id="L117">                            return wordsNode;</span>
+                        }
+<span class="nc" id="L119">                        count++;</span>
+<span class="nc" id="L120">                    }</span>
+<span class="nc" id="L121">                }</span>
+
+<span class="nc" id="L123">            }</span>
+<span class="nc" id="L124">        } catch (IOException e) {</span>
+<span class="nc" id="L125">            throw new RuntimeException(e);</span>
+<span class="nc" id="L126">        }</span>
+<span class="nc" id="L127">        return null;</span>
+    }
+
+    public HashMap&lt;String, String&gt; getWord(String category, String level) {
+<span class="nc" id="L131">        JsonNode jsonNode = getJsonWords(category, level);</span>
+<span class="nc" id="L132">        int index = random.nextInt(0, jsonNode.findValues(&quot;answer&quot;)</span>
+<span class="nc" id="L133">            .toArray().length);</span>
+<span class="nc" id="L134">        String answer = jsonNode.findValues(&quot;answer&quot;).toArray()[index].toString().replace(&quot;\&quot;&quot;, &quot;&quot;);</span>
+<span class="nc" id="L135">        String description = jsonNode.findValues(&quot;description&quot;).toArray()[index].toString();</span>
+<span class="nc" id="L136">        HashMap&lt;String, String&gt; wordGame = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L137">        wordGame.put(answer, description);</span>
+<span class="nc" id="L138">        return wordGame;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
