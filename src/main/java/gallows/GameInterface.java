@@ -7,12 +7,8 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 
+@SuppressWarnings("checkstyle:CyclomaticComplexity")
 public class GameInterface {
-    //todo:
-    //проверку по линтерам
-    //подравнять код, возможно что то вынести в отдельный класс
-    //проверку на ввод пользователя в самом начале
-    // потестить ввод с n
     @SuppressWarnings("checkstyle:ConstantName")
     private static final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
     private final CheckInputUserImpl checkInputUser = new CheckInputUserImpl();
@@ -44,7 +40,7 @@ public class GameInterface {
                         printStream.println(category);
                     }
 
-                    printStream.println("Для выбора категории укажите первую букву [m/a/s]-, иначе нажмите - [n]");
+                    printStream.println("Для выбора категории укажите первую букву [m/a/с]-, иначе нажмите - [n]");
                     String answerCategory = bufferedReader.readLine().toLowerCase();
                     Matcher matcherCategory = CheckInputUserImpl.patternCategory.matcher(answerCategory);
 
@@ -83,24 +79,22 @@ public class GameInterface {
                     SessionPlayer sessionPlayer = new SessionPlayer(word);
 
                     printStream.println("Подготовили для вас слово");
-                    printStream.println(word);
+//                    printStream.println(word);
 
 
                     logicFindCorrectChar.checkChar(sessionPlayer, '_');
                     printStream.println(sessionPlayer.currentEnter());
-
                     while (!(sessionPlayer.countAttempts < 0)) {
                         printStream.println("Если хотите подсказку, нажмите -[1], инача - пробел или другую ,erde");
 
                         String userTiip = bufferedReader.readLine().toLowerCase();
                         Matcher matcherTip = CheckInputUserImpl.patternGetTip.matcher(userTiip);
 
-                        while (!matcherTip.find()) {
-                            printStream.println("Некорректный ввод");
-                            userTiip = bufferedReader.readLine().toLowerCase();
-                            matcherTip = CheckInputUserImpl.patternGetTip.matcher(userTiip);
-                            System.out.println(userTiip);
-                        }
+//                        while (!matcherTip.find()) {
+//                            printStream.println("Некорректный ввод");
+//                            userTiip = bufferedReader.readLine().toLowerCase();
+//                            matcherTip = CheckInputUserImpl.patternGetTip.matcher(userTiip);
+//                        }
 
                         if (userTiip.equals("1")) {
                             printStream.println("Подсказка: " + tip);
@@ -153,8 +147,11 @@ public class GameInterface {
         }
     }
 
+    @SuppressWarnings("checkstyle:UncommentedMain")
     public static void main(String[] args) {
+
         GameInterface gameInterface = new GameInterface();
+
         gameInterface.userInterface();
     }
 
