@@ -72,7 +72,6 @@ public class GameInterface {
                     }
 
                     printStream.println("------------------------------------------------------");
-                    printStream.println(answerLevel);
 
                     HashMap<String, String> gameWord = wordsGallows.getWord(answerCategory, answerLevel);
                     String word = gameWord.keySet().stream().findFirst().get();
@@ -81,7 +80,6 @@ public class GameInterface {
 
                     printStream.println("Подготовили для вас слово");
 //                    printStream.println(word);
-
 
                     logicFindCorrectChar.checkChar(sessionPlayer, '_');
                     printStream.println(sessionPlayer.currentEnter());

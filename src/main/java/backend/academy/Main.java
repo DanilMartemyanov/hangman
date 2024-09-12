@@ -1,6 +1,6 @@
 package backend.academy;
 
-
+import gallows.WordsGallows;
 import lombok.experimental.UtilityClass;
 
 @UtilityClass

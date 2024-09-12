@@ -28,7 +28,7 @@ public class WordsGallows {
                 category.add(jsonNode1.get("title").asText());
             }
             int index = ThreadLocalRandom.current().nextInt(0, category.size());
-            return category.get(index);
+            return category.get(index).substring(0,1);
         } catch (IOException e) {
             // TODO: реализовать свой класс Exctption
             throw new RuntimeException(e);
