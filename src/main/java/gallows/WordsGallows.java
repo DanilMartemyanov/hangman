@@ -18,7 +18,6 @@ public class WordsGallows {
         int quantity = words.size();
         int index = random.nextInt(0, quantity);
         return words.get(index);
-
     }
 
     public String getRandomCategory() {

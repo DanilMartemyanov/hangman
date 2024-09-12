@@ -6,14 +6,13 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.Optional;
 import java.util.regex.Matcher;
 
 @SuppressWarnings("checkstyle:CyclomaticComplexity")
 public class GameInterface {
     @SuppressWarnings("checkstyle:ConstantName")
     private final BufferedReader bufferedReader =
-        new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
+            new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
     private final CheckInputUserImpl checkInputUser = new CheckInputUserImpl();
     private final LogicFindCorrectCharImpl logicFindCorrectChar = new LogicFindCorrectCharImpl();
     private final WordsGallows wordsGallows = new WordsGallows();
@@ -127,7 +126,7 @@ public class GameInterface {
                         logicFindCorrectChar.checkChar(sessionPlayer, enterLetter[0]);
 
                         int countMatches = checkInputUser
-                            .equalsCharArray(sessionPlayer.currentEnter(), sessionPlayer.currentAnswer);
+                                .equalsCharArray(sessionPlayer.currentEnter(), sessionPlayer.currentAnswer);
 
                         if (countMatches == oldCountMatches) {
                             printStream.println(ImageGallows.IMAGES[sessionPlayer.countAttempts - 1]);

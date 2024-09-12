@@ -4,6 +4,7 @@ public class LogicFindCorrectCharImpl implements LogicFindCorrectChar {
 
     @Override
     public SessionPlayer checkChar(SessionPlayer wordPlayer, char letter) {
+
         // замена символов в слове пользователя на "_"
         wordPlayer.currentEnter(wordPlayer.word().replaceAll("\\D", "_").toCharArray());
 

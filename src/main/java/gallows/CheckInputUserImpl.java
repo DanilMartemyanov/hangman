@@ -16,6 +16,7 @@ public class CheckInputUserImpl implements CheckInputUser {
     static final String NO = "n";
     static final String TIP = "1";
 
+
     @Override
     public int equalsCharArray(char[] currentEnter, char[] currentAnswer) {
         int count = 0;
