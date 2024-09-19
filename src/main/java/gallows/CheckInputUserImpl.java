@@ -4,12 +4,14 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings("checkstyle:ConstantName")
 public class CheckInputUserImpl implements CheckInputUser {
-    static final String REGEXCATEGORY = "^[macn]$";
+    static final String REGEXCATEGORY = "^[macnMACN]$";
     static final Pattern patternCategory = Pattern.compile(REGEXCATEGORY);
-    static final String REGEXLEVEL = "^[emhn]$";
+    static final String REGEXLEVEL = "^[emhnEMHN]$";
     static final Pattern patternLevel = Pattern.compile(REGEXLEVEL);
-    static final String STARTGAME = "^[yn]$";
+    static final String STARTGAME = "^[ynYN]$";
     static final Pattern patternStartGame = Pattern.compile(STARTGAME);
+    static final String ENTERLETTER = "^[а-яА-Я1]$";
+    static final Pattern patternLetter = Pattern.compile(ENTERLETTER);
     static final String GETTIP = "^[1\\S\s]$";
     static final Pattern patternGetTip = Pattern.compile(GETTIP);
     static final String YES = "y";

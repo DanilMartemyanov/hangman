@@ -8,7 +8,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 @SuppressWarnings("checkstyle:MultipleStringLiterals")
 public class WordsGallows {
     private static final File FILE = new File("src/main/resources/words.json");
