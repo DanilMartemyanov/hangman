@@ -11,7 +11,6 @@ import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 
 @SuppressWarnings("checkstyle:CyclomaticComplexity")
-@Singleton
 public class GameInterface {
     @SuppressWarnings("checkstyle:ConstantName")
     private final BufferedReader bufferedReader =
@@ -110,6 +109,7 @@ public class GameInterface {
                         while (!matcherLetter.find()) {
                             printStream.println("Некорректный ввод");
                             enterLetter = bufferedReader.readLine();
+                            matcherLetter = CheckInputUserImpl.patternLetter.matcher(enterLetter);
                         }
 
                         String enterTip = enterLetter;
@@ -129,7 +129,7 @@ public class GameInterface {
 
                             if (countMatches == oldCountMatches) {
                                 printStream.println(ImageGallows.IMAGES[sessionPlayer.countAttempts - 1]);
-
+                                sessionPlayer.countAttempts--;
                             }
 
                             oldCountMatches = countMatches;
