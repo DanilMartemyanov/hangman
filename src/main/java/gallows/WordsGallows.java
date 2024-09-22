@@ -134,4 +134,8 @@ public class WordsGallows {
         wordGame.put(answer, description);
         return wordGame;
     }
+
+    public boolean checkWord(String word) {
+        return "".equals(word);
+    }
 }

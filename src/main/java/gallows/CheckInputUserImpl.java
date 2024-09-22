@@ -35,7 +35,7 @@ public class CheckInputUserImpl implements CheckInputUser {
 
     @Override
     public boolean checkCorrectWord(char[] currentAnswer, String word) {
-        int count = 1;
+        int count = 0;
         for (int i = 0; i < currentAnswer.length; i++) {
             if (currentAnswer[i] == word.charAt(i)) {
                 count++;
@@ -119,7 +119,7 @@ public class CheckInputUserImpl implements CheckInputUser {
 
 
     @Override
-    public String enterLetter(BufferedReader bufferedReader, PrintStream printStream, SessionPlayer sessionPlayer) {
+    public String enterLetter(BufferedReader bufferedReader, PrintStream printStream) {
         try {
             String letter = bufferedReader.readLine();
             Matcher matcherLetter = CheckInputUserImpl.patternLetter.matcher(letter);

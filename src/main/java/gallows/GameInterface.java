@@ -48,6 +48,9 @@ public class GameInterface {
                     logicGuessingWord.getWords(wordsGallows, printStream, category, level);
                 logicFindCorrectChar.checkChar(sessionPlayer, '_');
                 printStream.println(sessionPlayer.currentEnter());
+                if (wordsGallows.checkWord(sessionPlayer.word())) {
+                    break;
+                }
                 while (!(sessionPlayer.countAttempts < 0)) {
 
                     printStream.println("У вас осталось - " + sessionPlayer.countAttempts + " попыток");
@@ -59,7 +62,7 @@ public class GameInterface {
 
                     printStream.println("Введите букву или запросите подсказку, нажав - [1]");
 
-                    String letter = checkInputUser.enterLetter(bufferedReader, printStream, sessionPlayer);
+                    String letter = checkInputUser.enterLetter(bufferedReader, printStream);
 
                     if (CheckInputUserImpl.TIP.equals(letter)) {
                         printStream.println("Подсказка: " + sessionPlayer.tip());
@@ -70,12 +73,7 @@ public class GameInterface {
                         int countMatches = checkInputUser
                             .equalsCharArray(sessionPlayer.currentEnter(), sessionPlayer.currentAnswer);
 
-                        if (countMatches == 0) {
-                            printStream.println(ImageGallows.IMAGES[sessionPlayer.countAttempts - 1]);
-                            sessionPlayer.countAttempts--;
-                        }
-
-                        printStream.println(sessionPlayer.currentAnswer());
+                        sessionPlayer.displayImage(countMatches, printStream);
 
                         if (checkInputUser.checkCorrectWord(sessionPlayer.currentAnswer(), sessionPlayer.word())) {
                             printStream.println("ВЫ победили!!!!!!!!!!!");

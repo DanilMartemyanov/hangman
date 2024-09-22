@@ -14,5 +14,5 @@ public interface CheckInputUser {
 
     String choiceLevel(BufferedReader bufferedReader, PrintStream printStream, WordsGallows wordsGallows);
 
-    String enterLetter(BufferedReader bufferedReader, PrintStream printStream, SessionPlayer sessionPlayer);
+    String enterLetter(BufferedReader bufferedReader, PrintStream printStream);
 }
