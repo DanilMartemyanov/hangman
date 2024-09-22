@@ -43,7 +43,7 @@ public class GameInterface {
                 String level = checkInputUser.choiceLevel(bufferedReader, printStream, wordsGallows);
 
                 printStream.println("------------------------------------------------------");
-
+                // создание игровой сессии
                 SessionPlayer sessionPlayer =
                     logicGuessingWord.getWords(wordsGallows, printStream, category, level);
                 logicFindCorrectChar.checkChar(sessionPlayer, '_');
@@ -81,7 +81,6 @@ public class GameInterface {
                             break;
                         }
                     }
-
                 }
             } else {
                 printStream.println("Закончили");

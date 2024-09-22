@@ -31,7 +31,6 @@ public class WordsGallows {
 
             return category.get(index).substring(0, 1).toLowerCase();
         } catch (IOException e) {
-            // TODO: реализовать свой класс Exctption
             throw new RuntimeException(e);
         }
 
@@ -54,7 +53,6 @@ public class WordsGallows {
                     return null;
             }
         } catch (IOException e) {
-            //TO DO: реализовать свой класс Exctption
             throw new RuntimeException(e);
         }
 
