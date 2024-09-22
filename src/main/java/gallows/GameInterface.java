@@ -74,7 +74,6 @@ public class GameInterface {
                             .equalsCharArray(sessionPlayer.currentEnter(), sessionPlayer.currentAnswer);
 
                         sessionPlayer.displayImage(countMatches, printStream);
-
                         if (checkInputUser.checkCorrectWord(sessionPlayer.currentAnswer(), sessionPlayer.word())) {
                             printStream.println("ВЫ победили!!!!!!!!!!!");
                             printStream.println("Загаданное слово - " + sessionPlayer.word());

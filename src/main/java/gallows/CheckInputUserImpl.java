@@ -36,8 +36,9 @@ public class CheckInputUserImpl implements CheckInputUser {
     @Override
     public boolean checkCorrectWord(char[] currentAnswer, String word) {
         int count = 0;
+        String newWord = word.toLowerCase();
         for (int i = 0; i < currentAnswer.length; i++) {
-            if (currentAnswer[i] == word.charAt(i)) {
+            if (currentAnswer[i] == newWord.charAt(i)) {
                 count++;
             }
         }
