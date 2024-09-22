@@ -29,7 +29,7 @@ public class WordsGallows {
             }
             int index = random.nextInt(0, category.size());
 
-            return category.get(index).substring(0, 1);
+            return category.get(index).substring(0, 1).toLowerCase();
         } catch (IOException e) {
             // TODO: реализовать свой класс Exctption
             throw new RuntimeException(e);

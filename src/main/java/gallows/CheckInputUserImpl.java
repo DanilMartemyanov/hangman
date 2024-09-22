@@ -1,5 +1,9 @@
 package gallows;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @SuppressWarnings("checkstyle:ConstantName")
@@ -17,7 +21,6 @@ public class CheckInputUserImpl implements CheckInputUser {
     static final String YES = "y";
     static final String NO = "n";
     static final String TIP = "1";
-
 
     @Override
     public int equalsCharArray(char[] currentEnter, char[] currentAnswer) {
@@ -44,4 +47,90 @@ public class CheckInputUserImpl implements CheckInputUser {
         return false;
     }
 
+
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
+    @Override
+    public String startGame(BufferedReader bufferedReader, PrintStream printStream) {
+        try {
+            String ready = bufferedReader.readLine();
+            Matcher matcherReady = CheckInputUserImpl.patternStartGame.matcher(ready);
+
+            while (!matcherReady.find()) {
+                printStream.println("Некорректный ввод, введите значение заново");
+                ready = bufferedReader.readLine();
+                matcherReady = CheckInputUserImpl.patternStartGame.matcher(ready);
+            }
+            return ready.toLowerCase();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
+    @Override
+    public String choiceCategory(BufferedReader bufferedReader, PrintStream printStream, WordsGallows wordsGallows) {
+        printStream.println("Для выбора категории укажите первую букву [m/a/с]-, иначе нажмите - [n]");
+
+        try {
+            String category = bufferedReader.readLine();
+            Matcher matcherCategory = CheckInputUserImpl.patternCategory.matcher(category);
+
+            while (!matcherCategory.find()) {
+                printStream.println("Некорректный ввод, введите значение заново");
+                category = bufferedReader.readLine();
+                matcherCategory = CheckInputUserImpl.patternCategory.matcher(category);
+            }
+
+            if (CheckInputUserImpl.NO.equals(category)) {
+                category = wordsGallows.getRandomCategory();
+            }
+            return category.toLowerCase();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    @SuppressWarnings("checkstyle:MultipleStringLiterals")
+    @Override
+    public String choiceLevel(BufferedReader bufferedReader, PrintStream printStream, WordsGallows wordsGallows) {
+        try {
+            String level = bufferedReader.readLine();
+            Matcher matcherLevel = CheckInputUserImpl.patternLevel.matcher(level);
+
+            while (!matcherLevel.find()) {
+                printStream.println("Некорректный ввод, введите значение заново");
+                level = bufferedReader.readLine();
+                matcherLevel = CheckInputUserImpl.patternLevel.matcher(level);
+            }
+
+            if (CheckInputUserImpl.NO.equals(level)) {
+                level = wordsGallows.getRandomLevel();
+            }
+            return level.toLowerCase();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+    @Override
+    public String enterLetter(BufferedReader bufferedReader, PrintStream printStream, SessionPlayer sessionPlayer) {
+        try {
+            String letter = bufferedReader.readLine();
+            Matcher matcherLetter = CheckInputUserImpl.patternLetter.matcher(letter);
+            while (!matcherLetter.find()) {
+                printStream.println("Некорректный ввод");
+                letter = bufferedReader.readLine();
+                matcherLetter = CheckInputUserImpl.patternLetter.matcher(letter);
+            }
+            return letter.toLowerCase();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

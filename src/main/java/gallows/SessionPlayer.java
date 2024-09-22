@@ -10,6 +10,7 @@ public class SessionPlayer {
     @SuppressWarnings("checkstyle:MagicNumber")
     public int countAttempts = 6;
     private String word;
+    private String tip;
     private char[] currentEnter;
     public char[] currentAnswer;
 
