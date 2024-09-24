@@ -7,7 +7,6 @@ import java.nio.charset.StandardCharsets;
 
 
 public class GameInterface {
-    @SuppressWarnings("checkstyle:ConstantName")
     private final BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
     private final CheckInputUserImpl checkInputUser = new CheckInputUserImpl();

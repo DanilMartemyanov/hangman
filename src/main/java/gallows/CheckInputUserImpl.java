@@ -21,6 +21,7 @@ public class CheckInputUserImpl implements CheckInputUser {
     static final String YES = "y";
     static final String NO = "n";
     static final String TIP = "1";
+    private static final String INCORRECTINPUT = "Некорректный ввод, введите значение заново";
 
     @Override
     public int equalsCharArray(char[] currentEnter, char[] currentAnswer) {
@@ -49,7 +50,7 @@ public class CheckInputUserImpl implements CheckInputUser {
     }
 
 
-    @SuppressWarnings("checkstyle:MultipleStringLiterals")
+
     @Override
     public String startGame(BufferedReader bufferedReader, PrintStream printStream) {
         try {
@@ -57,7 +58,7 @@ public class CheckInputUserImpl implements CheckInputUser {
             Matcher matcherReady = CheckInputUserImpl.patternStartGame.matcher(ready);
 
             while (!matcherReady.find()) {
-                printStream.println("Некорректный ввод, введите значение заново");
+                printStream.println(INCORRECTINPUT);
                 ready = bufferedReader.readLine();
                 matcherReady = CheckInputUserImpl.patternStartGame.matcher(ready);
             }
@@ -69,7 +70,7 @@ public class CheckInputUserImpl implements CheckInputUser {
     }
 
 
-    @SuppressWarnings("checkstyle:MultipleStringLiterals")
+
     @Override
     public String choiceCategory(BufferedReader bufferedReader, PrintStream printStream, WordsGallows wordsGallows) {
         printStream.println("Для выбора категории укажите первую букву [m/a/с]-, иначе нажмите - [n]");
@@ -79,7 +80,7 @@ public class CheckInputUserImpl implements CheckInputUser {
             Matcher matcherCategory = CheckInputUserImpl.patternCategory.matcher(category);
 
             while (!matcherCategory.find()) {
-                printStream.println("Некорректный ввод, введите значение заново");
+                printStream.println(INCORRECTINPUT);
                 category = bufferedReader.readLine();
                 matcherCategory = CheckInputUserImpl.patternCategory.matcher(category);
             }
@@ -95,7 +96,7 @@ public class CheckInputUserImpl implements CheckInputUser {
     }
 
 
-    @SuppressWarnings("checkstyle:MultipleStringLiterals")
+
     @Override
     public String choiceLevel(BufferedReader bufferedReader, PrintStream printStream, WordsGallows wordsGallows) {
         try {
@@ -103,7 +104,7 @@ public class CheckInputUserImpl implements CheckInputUser {
             Matcher matcherLevel = CheckInputUserImpl.patternLevel.matcher(level);
 
             while (!matcherLevel.find()) {
-                printStream.println("Некорректный ввод, введите значение заново");
+                printStream.println(INCORRECTINPUT);
                 level = bufferedReader.readLine();
                 matcherLevel = CheckInputUserImpl.patternLevel.matcher(level);
             }
@@ -125,7 +126,7 @@ public class CheckInputUserImpl implements CheckInputUser {
             String letter = bufferedReader.readLine();
             Matcher matcherLetter = CheckInputUserImpl.patternLetter.matcher(letter);
             while (!matcherLetter.find()) {
-                printStream.println("Некорректный ввод");
+                printStream.println(INCORRECTINPUT);
                 letter = bufferedReader.readLine();
                 matcherLetter = CheckInputUserImpl.patternLetter.matcher(letter);
             }
