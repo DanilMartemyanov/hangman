@@ -20,7 +20,6 @@ public class LogicGuessingWordImpl implements LogicGuessingWord {
         SessionPlayer sessionPlayer = new SessionPlayer(word);
         sessionPlayer.tip(tip);
         printStream.println("Подготовили для вас слово");
-        printStream.println(word);
         return sessionPlayer;
     }
 }

@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
-@SuppressWarnings("checkstyle:CyclomaticComplexity")
+
 public class GameInterface {
     @SuppressWarnings("checkstyle:ConstantName")
     private final BufferedReader bufferedReader =
@@ -15,18 +15,19 @@ public class GameInterface {
     private final WordsGallows wordsGallows = new WordsGallows();
     private final PrintStream printStream = new PrintStream(System.out, true, StandardCharsets.UTF_8);
     private final LogicGuessingWordImpl logicGuessingWord = new LogicGuessingWordImpl();
+    private static final String SEPARATOR = "------------------------------------------------------";
 
-    @SuppressWarnings("checkstyle:MultipleStringLiterals")
+
     public void userInterface() {
         while (true) {
-            printStream.println("------------------------------------------------------");
+            printStream.println(SEPARATOR);
             printStream.println("Привееет, готовы поиграть в виселицу и повеселиться?");
             printStream.println("Для продолжения введите - [y], иначе - [n]");
 
             String ready = checkInputUser.startGame(bufferedReader, printStream);
 
             if (CheckInputUserImpl.YES.equals(ready)) {
-                printStream.println("------------------------------------------------------");
+                printStream.println(SEPARATOR);
                 printStream.println("Хотите выбрать категорию или доверитесь нам?");
                 printStream.println("Возможные категории:");
 
@@ -36,13 +37,13 @@ public class GameInterface {
 
                 String category = checkInputUser.choiceCategory(bufferedReader, printStream, wordsGallows);
 
-                printStream.println("------------------------------------------------------");
+                printStream.println(SEPARATOR);
                 printStream.println("Что насчет уровня сложности?");
                 printStream.println("Для выбора уровня сложности укажите букву [e/m/h]-, иначе нажмите - [n]");
 
                 String level = checkInputUser.choiceLevel(bufferedReader, printStream, wordsGallows);
 
-                printStream.println("------------------------------------------------------");
+                printStream.println(SEPARATOR);
                 // создание игровой сессии
                 SessionPlayer sessionPlayer =
                     logicGuessingWord.getWords(wordsGallows, printStream, category, level);
