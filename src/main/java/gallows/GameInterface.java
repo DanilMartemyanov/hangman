@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 
-
 public class GameInterface {
     private final BufferedReader bufferedReader =
         new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
@@ -15,7 +14,6 @@ public class GameInterface {
     private final PrintStream printStream = new PrintStream(System.out, true, StandardCharsets.UTF_8);
     private final LogicGuessingWordImpl logicGuessingWord = new LogicGuessingWordImpl();
     private static final String SEPARATOR = "------------------------------------------------------";
-
 
     public void userInterface() {
         while (true) {
