@@ -1,8 +1,7 @@
 package gallows;
 
-public class LogicFindCorrectCharImpl implements LogicFindCorrectChar {
+public class LogicFindCorrectCharImpl {
 
-    @Override
     public SessionPlayer checkChar(SessionPlayer wordPlayer, char letter) {
 
         // замена символов в слове пользователя на "_"

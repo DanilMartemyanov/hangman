@@ -7,7 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @SuppressWarnings("checkstyle:ConstantName")
-public class CheckInputUserImpl implements CheckInputUser {
+public class CheckInputUserImpl {
     static final Pattern patternCategory = Pattern.compile("^[macnMACN]$");
     static final Pattern patternLevel = Pattern.compile("^[emhnEMHN]$");
     static final Pattern patternStartGame = Pattern.compile("^[ynYN]$");
@@ -18,7 +18,6 @@ public class CheckInputUserImpl implements CheckInputUser {
     static final String TIP = "1";
     private static final String INCORRECTINPUT = "Некорректный ввод, введите значение заново";
 
-    @Override
     public int equalsCharArray(char[] currentEnter, char[] currentAnswer) {
         int count = 0;
         for (int i = 0; i < currentAnswer.length; i++) {
@@ -29,7 +28,6 @@ public class CheckInputUserImpl implements CheckInputUser {
         return count;
     }
 
-    @Override
     public boolean checkCorrectWord(char[] currentAnswer, String word) {
         int count = 0;
         String newWord = word.toLowerCase();
@@ -44,9 +42,6 @@ public class CheckInputUserImpl implements CheckInputUser {
         return false;
     }
 
-
-
-    @Override
     public String startGame(BufferedReader bufferedReader, PrintStream printStream) {
         try {
             String ready = bufferedReader.readLine();
@@ -64,9 +59,6 @@ public class CheckInputUserImpl implements CheckInputUser {
 
     }
 
-
-
-    @Override
     public String choiceCategory(BufferedReader bufferedReader, PrintStream printStream, WordsGallows wordsGallows) {
         printStream.println("Для выбора категории укажите первую букву [m/a/с]-, иначе нажмите - [n]");
 
@@ -90,9 +82,6 @@ public class CheckInputUserImpl implements CheckInputUser {
 
     }
 
-
-
-    @Override
     public String choiceLevel(BufferedReader bufferedReader, PrintStream printStream, WordsGallows wordsGallows) {
         try {
             String level = bufferedReader.readLine();
@@ -114,8 +103,6 @@ public class CheckInputUserImpl implements CheckInputUser {
 
     }
 
-
-    @Override
     public String enterLetter(BufferedReader bufferedReader, PrintStream printStream) {
         try {
             String letter = bufferedReader.readLine();
