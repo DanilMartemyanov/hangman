@@ -8,7 +8,6 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@SuppressWarnings("checkstyle:MultipleStringLiterals")
 public class WordsGallows {
     private static InputStream file = getFileFromResourceAsStream("json/words.json");
     private static final ObjectMapper MAPPER = new ObjectMapper();
@@ -31,8 +30,8 @@ public class WordsGallows {
 
     public String getRandomCategory() {
         ArrayList<String> category = new ArrayList<>();
-        for (JsonNode jsonNode1 : NODE.get("category")) {
-            category.add(jsonNode1.get("title").asText());
+        for (JsonNode jsonNode1 : NODE.get(Constant.CATEGORY)) {
+            category.add(jsonNode1.get(Constant.TITLE).asText());
         }
         int index = random.nextInt(0, category.size());
 
@@ -41,7 +40,7 @@ public class WordsGallows {
     }
 
     public String getRandomLevel() {
-        int sizeLevelArray = NODE.get("category").findValues("level").size();
+        int sizeLevelArray = NODE.get(Constant.CATEGORY).findValues(Constant.LEVEL).size();
         int index = random.nextInt(0, sizeLevelArray);
         switch (index) {
             case 0:
@@ -57,8 +56,8 @@ public class WordsGallows {
 
     public ArrayList<String> getAllCategories() {
         ArrayList<String> categories = new ArrayList<>();
-        for (JsonNode jsonNode : NODE.get("category")) {
-            categories.add(jsonNode.get("title").asText());
+        for (JsonNode jsonNode : NODE.get(Constant.CATEGORY)) {
+            categories.add(jsonNode.get(Constant.TITLE).asText());
         }
         return categories;
     }
@@ -93,8 +92,8 @@ public class WordsGallows {
             default:
                 level = "";
         }
-        for (JsonNode categoryNode : NODE.path("category")) {
-            for (JsonNode levelNode : categoryNode.path("level")) {
+        for (JsonNode categoryNode : NODE.path(Constant.CATEGORY)) {
+            for (JsonNode levelNode : categoryNode.path(Constant.LEVEL)) {
                 for (JsonNode wordsNode : levelNode.path(level)) {
                     if (indexCategory == count) {
                         return wordsNode;
@@ -109,10 +108,10 @@ public class WordsGallows {
 
     public HashMap<String, String> getWord(String category, String level) {
         JsonNode jsonNode = getJsonWords(category, level);
-        int index = random.nextInt(0, jsonNode.findValues("answer")
+        int index = random.nextInt(0, jsonNode.findValues(Constant.ANSWER)
             .toArray().length);
-        String answer = jsonNode.findValues("answer").toArray()[index].toString().replace("\"", "");
-        String description = jsonNode.findValues("description").toArray()[index].toString();
+        String answer = jsonNode.findValues(Constant.ANSWER).toArray()[index].toString().replace("\"", "");
+        String description = jsonNode.findValues(Constant.DESCRIPTION).toArray()[index].toString();
         HashMap<String, String> wordGame = new HashMap<>();
         wordGame.put(answer, description);
         return wordGame;

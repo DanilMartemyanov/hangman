@@ -10,31 +10,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class ParsingJsonWords {
-    @JsonProperty("category")
+    @JsonProperty(Constant.CATEGORY)
     private JsonNode category;
-    @JsonProperty("level")
+    @JsonProperty(Constant.LEVEL)
     private JsonNode level;
-    @JsonProperty("name1")
-    private JsonNode name1;
-    @JsonProperty("name2")
-    private JsonNode name2;
-    @JsonProperty("name3")
-    private JsonNode name3;
-    @JsonProperty("title")
+    @JsonProperty(Constant.TITLE)
     private JsonNode title;
-    @JsonProperty("easy")
+    @JsonProperty(Constant.EASY)
     private JsonNode easy;
-    @JsonProperty("middle")
+    @JsonProperty(Constant.MIDDLE)
     private JsonNode middle;
-    @JsonProperty("hard")
+    @JsonProperty(Constant.HARD)
     private JsonNode hard;
     private JsonNode answer;
     private JsonNode description;
-    @JsonProperty("word1")
-    private JsonNode word1;
-    @JsonProperty("word2")
-    private JsonNode word2;
-    @JsonProperty("word3")
-    private JsonNode word3;
+
 
 }
