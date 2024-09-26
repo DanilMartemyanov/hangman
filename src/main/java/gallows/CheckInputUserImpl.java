@@ -6,13 +6,11 @@ import java.io.PrintStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@SuppressWarnings("checkstyle:ConstantName")
 public class CheckInputUserImpl {
-    static final Pattern patternCategory = Pattern.compile("^[macnMACN]$");
-    static final Pattern patternLevel = Pattern.compile("^[emhnEMHN]$");
-    static final Pattern patternStartGame = Pattern.compile("^[ynYN]$");
-    static final Pattern patternLetter = Pattern.compile("^[а-яА-Я1]$");
-    static final Pattern patternGetTip = Pattern.compile("^[1\\S\s]$");
+    static final Pattern PATTERNCATEGORY = Pattern.compile("^[macnMACN]$");
+    static final Pattern PATTERNLEVEL = Pattern.compile("^[emhnEMHN]$");
+    static final Pattern PATTERNSTARTGAME = Pattern.compile("^[ynYN]$");
+    static final Pattern PATTERNLETTER = Pattern.compile("^[а-яА-Я1]$");
     static final String YES = "y";
     static final String NO = "n";
     static final String TIP = "1";
@@ -36,21 +34,18 @@ public class CheckInputUserImpl {
                 count++;
             }
         }
-        if (count == word.length()) {
-            return true;
-        }
-        return false;
+        return count == word.length();
     }
 
     public String startGame(BufferedReader bufferedReader, PrintStream printStream) {
         try {
             String ready = bufferedReader.readLine();
-            Matcher matcherReady = CheckInputUserImpl.patternStartGame.matcher(ready);
+            Matcher matcherReady = PATTERNSTARTGAME.matcher(ready);
 
             while (!matcherReady.find()) {
                 printStream.println(INCORRECTINPUT);
                 ready = bufferedReader.readLine();
-                matcherReady = CheckInputUserImpl.patternStartGame.matcher(ready);
+                matcherReady = PATTERNSTARTGAME.matcher(ready);
             }
             return ready.toLowerCase();
         } catch (IOException e) {
@@ -64,15 +59,15 @@ public class CheckInputUserImpl {
 
         try {
             String category = bufferedReader.readLine();
-            Matcher matcherCategory = CheckInputUserImpl.patternCategory.matcher(category);
+            Matcher matcherCategory = PATTERNCATEGORY.matcher(category);
 
             while (!matcherCategory.find()) {
                 printStream.println(INCORRECTINPUT);
                 category = bufferedReader.readLine();
-                matcherCategory = CheckInputUserImpl.patternCategory.matcher(category);
+                matcherCategory = PATTERNCATEGORY.matcher(category);
             }
 
-            if (CheckInputUserImpl.NO.equals(category)) {
+            if (NO.equals(category)) {
                 category = wordsGallows.getRandomCategory();
             }
             return category.toLowerCase();
@@ -85,15 +80,15 @@ public class CheckInputUserImpl {
     public String choiceLevel(BufferedReader bufferedReader, PrintStream printStream, WordsGallows wordsGallows) {
         try {
             String level = bufferedReader.readLine();
-            Matcher matcherLevel = CheckInputUserImpl.patternLevel.matcher(level);
+            Matcher matcherLevel = PATTERNLEVEL.matcher(level);
 
             while (!matcherLevel.find()) {
                 printStream.println(INCORRECTINPUT);
                 level = bufferedReader.readLine();
-                matcherLevel = CheckInputUserImpl.patternLevel.matcher(level);
+                matcherLevel = PATTERNLEVEL.matcher(level);
             }
 
-            if (CheckInputUserImpl.NO.equals(level)) {
+            if (NO.equals(level)) {
                 level = wordsGallows.getRandomLevel();
             }
             return level.toLowerCase();
@@ -106,11 +101,11 @@ public class CheckInputUserImpl {
     public String enterLetter(BufferedReader bufferedReader, PrintStream printStream) {
         try {
             String letter = bufferedReader.readLine();
-            Matcher matcherLetter = CheckInputUserImpl.patternLetter.matcher(letter);
+            Matcher matcherLetter = PATTERNLETTER.matcher(letter);
             while (!matcherLetter.find()) {
                 printStream.println(INCORRECTINPUT);
                 letter = bufferedReader.readLine();
-                matcherLetter = CheckInputUserImpl.patternLetter.matcher(letter);
+                matcherLetter = PATTERNLETTER.matcher(letter);
             }
             return letter.toLowerCase();
         } catch (IOException e) {
